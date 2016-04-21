@@ -1,6 +1,3 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'xpitality/notifier'
-
 require 'simplecov'
 SimpleCov.start do
   require 'simplecov-badge'
@@ -15,3 +12,6 @@ SimpleCov.start do
                                                                     SimpleCov::Formatter::BadgeFormatter,
                                                                   ]
 end
+
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'xpitality/notifier'

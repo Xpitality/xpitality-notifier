@@ -2,7 +2,8 @@
 /.yardoc
 /Gemfile.lock
 /_yardoc/
-/coverage/
+coverage/*
+!coverage-badge.png
 /doc/
 /pkg/
 /spec/reports/
