@@ -1,3 +1,5 @@
+[![Build Status](https://semaphoreci.com/api/v1/marko_xpitality/xpitality-notifier/branches/master/badge.svg)](https://semaphoreci.com/marko_xpitality/xpitality-notifier)
+
 # Xpitality::Notifier
 
 
