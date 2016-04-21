@@ -15,3 +15,4 @@ end
 
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'xpitality/notifier'
+require 'support/shared/base_notifier.rb'
