@@ -1,4 +1,6 @@
-[![Build Status](https://semaphoreci.com/api/v1/marko_xpitality/xpitality-notifier/branches/master/badge.svg)](https://semaphoreci.com/marko_xpitality/xpitality-notifier)
+[![Semaphore Build Status](https://semaphoreci.com/api/v1/marko_xpitality/xpitality-notifier/branches/master/badge.svg)](https://semaphoreci.com/marko_xpitality/xpitality-notifier)
+
+![Simplecov Coverage badge](/coverage/coverage-badge.png?raw=true "Coverage badge")
 
 # Xpitality::Notifier
 
