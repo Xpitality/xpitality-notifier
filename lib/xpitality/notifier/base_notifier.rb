@@ -4,7 +4,6 @@ module Xpitality
       @client = nil
       @known_clients = []
       @passable_options = []
-      @settable_options = []
 
       @passable_options.each { |opt| self.instance_variable_set("@#{opt}".to_sym, nil) }
 
@@ -45,10 +44,6 @@ module Xpitality
 
         def known_clients
           @known_clients
-        end
-
-        def settable_options
-          @settable_options
         end
 
         def passable_options
