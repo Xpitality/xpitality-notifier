@@ -38,6 +38,7 @@ Global options may be added in the initializer (any option may be set/overriden 
 Available clients: *[:slack]*
 
 ```ruby
+    require 'slack-notify'
     Xpitality::Notifier::ChatNotifier.configure do |config|
       config.set_option :client, :slack
       config.set_option :webhook_url, 'https://hooks...'
@@ -52,6 +53,7 @@ Available clients: *[:slack]*
 Available clients: *[:nexmo]*
 
 ```ruby
+    require 'nexmo'
     Xpitality::Notifier::SmsNotifier.configure do |config|
       config.set_option :client, :nexmo
       config.set_option :secret, ENV['nexmo_secret']
@@ -66,6 +68,7 @@ Available clients: *[:nexmo]*
 Available clients: *[:bugsnag]*
 
 ```ruby
+    require 'bugsnag'
     Xpitality::Notifier::ExceptionNotifier.configure do |config|
       config.set_option :client, :bugsnag
     end
