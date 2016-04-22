@@ -1,4 +1,5 @@
-require 'nexmo'
+# require 'nexmo'
+
 module Xpitality
   module Notifier
     module Sms

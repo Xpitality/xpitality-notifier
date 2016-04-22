@@ -1,4 +1,4 @@
-require 'slack-notify'
+# require 'slack-notify'
 module Xpitality
   module Notifier
     module Chat

@@ -8,6 +8,9 @@ require 'xpitality/notifier/chat/slack_notifier'
 require 'xpitality/notifier/sms_notifier'
 require 'xpitality/notifier/sms/nexmo_notifier'
 
+require 'xpitality/notifier/exception_notifier'
+require 'xpitality/notifier/exception/bugsnag_notifier'
+
 require 'active_support/core_ext/hash'
 
 # module Xpitality

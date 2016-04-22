@@ -36,7 +36,7 @@ module Xpitality
           options.symbolize_keys!
           options = default_options.merge(options)
           sanity_check(options)
-          client_class.new(options).notify message
+          client_class.notify message, options
         end
 
         def client_class

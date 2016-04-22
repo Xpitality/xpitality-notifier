@@ -1,15 +1,15 @@
 module Xpitality
   module Notifier
-    class SmsNotifier < Xpitality::Notifier::BaseNotifier
+    class ExceptionNotifier < Xpitality::Notifier::BaseNotifier
 
-      @known_clients = [:nexmo]
-      @passable_options = [:key, :secret, :from, :to]
+      @known_clients = [:bugsnag]
+      @passable_options = []
 
       class << self
         def client_class
           case get_option :client
-            when :nexmo
-              Xpitality::Notifier::Sms::NexmoNotifier
+            when :bugsnag
+              Xpitality::Notifier::Exception::BugsnagNotifier
             else
               raise 'unknown client'
           end

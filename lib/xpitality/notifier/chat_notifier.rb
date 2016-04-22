@@ -9,7 +9,7 @@ module Xpitality
         def client_class
           case get_option :client
             when :slack
-              ::SlackNotify::Client
+              Xpitality::Notifier::Chat::SlackNotifier
             else
               raise 'unknown client'
           end

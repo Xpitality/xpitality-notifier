@@ -3,11 +3,16 @@ RSpec.shared_examples 'base notifier' do
   describe 'configure' do
     it 'sets and gets an instance variable' do
       var = subject.passable_options.sample
-      expect(subject.get_option(var)).to eq nil
-      expect(subject).to receive(:set_option).with(var, 'some_value').and_call_original
+      if subject.passable_options.empty?
+        pending "#{subject.name} has no passable options, and thus getters and setters can not be tested"
+        raise
+      else
+        expect(subject.get_option(var)).to eq nil
+        expect(subject).to receive(:set_option).with(var, 'some_value').and_call_original
 
-      subject.configure { |config| config.set_option var, 'some_value' }
-      expect(subject.get_option(var)).to eq 'some_value'
+        subject.configure { |config| config.set_option var, 'some_value' }
+        expect(subject.get_option(var)).to eq 'some_value'
+      end
     end
   end
 
@@ -16,9 +21,13 @@ RSpec.shared_examples 'base notifier' do
 
     context 'when no values configured' do
       it 'sets all values to nil' do
-        options = subject.default_options
-        expect(options.keys.sort).to eq subject.passable_options.sort
-        expect(options.values.uniq).to eq [nil]
+        if subject.passable_options.empty?
+          expect(subject.default_options).to be_empty
+        else
+          options = subject.default_options
+          expect(options.keys.sort).to eq subject.passable_options.sort
+          expect(options.values.uniq).to eq [nil]
+        end
       end
     end
   end
@@ -48,8 +57,13 @@ RSpec.shared_examples 'base notifier' do
       let(:an_option) { subject.passable_options.sample }
 
       it 'raises an error when an option is missing' do
-        options.merge!({ an_option => nil })
-        expect { subject.sanity_check(options) }.to raise_error "mandatory option #{an_option} is missing"
+        if subject.passable_options.empty?
+          pending "#{subject.name} has no passable options, and thus sanity_check for passable options always passes"
+          raise
+        else
+          options.merge!({ an_option => nil })
+          expect { subject.sanity_check(options) }.to raise_error "mandatory option #{an_option} is missing"
+        end
       end
 
       it 'passes when all options are set' do
@@ -71,8 +85,7 @@ RSpec.shared_examples 'base notifier' do
       it 'instantiates client and calls notify on it' do
         message = 'hello'
 
-        expect_any_instance_of(subject.client_class).to receive(:initialize).with(options)
-        expect_any_instance_of(subject.client_class).to receive(:notify).with(message)
+        expect(subject.client_class).to receive(:notify).with(message, options)
 
         subject.notify(message, options)
       end

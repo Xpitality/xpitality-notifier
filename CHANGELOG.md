@@ -1,6 +1,9 @@
 ## 0.0.2 - 2016-04-21
   * changes how the options are specified in the initializer
   * adds SmsNotifier
+  * adds NexmoNotifier
+  * adds ExceptionNotifier
+  * adds BugsnagNotifier
 
 ### Breaking change:
 
