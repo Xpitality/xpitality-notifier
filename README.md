@@ -127,3 +127,21 @@ Examples:
       Xpitality::Notifier::ExceptionNotifier.notify e
     end
 ```    
+
+## Tests when this gem is used as dependency in other gems
+
+It is enough to specify the client for all notifiers to :specs in the spec_helper, like this:
+
+```ruby
+    Xpitality::Notifier::ChatNotifier.configure do |config|
+      config.set_option :client, :specs
+    end
+
+    Xpitality::Notifier::SmsNotifier.configure do |config|
+      config.set_option :client, :specs
+    end
+
+    Xpitality::Notifier::ExceptionNotifier.configure do |config|
+      config.set_option :client, :specs
+    end
+```

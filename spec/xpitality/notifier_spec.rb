@@ -43,4 +43,32 @@ describe Xpitality::Notifier do
     end
 
   end
+
+  context 'when client set to :specs' do
+    before :each do
+      Xpitality::Notifier::ChatNotifier.configure do |config|
+        config.set_option :client, :specs
+      end
+
+      Xpitality::Notifier::SmsNotifier.configure do |config|
+        config.set_option :client, :specs
+      end
+
+      Xpitality::Notifier::ExceptionNotifier.configure do |config|
+        config.set_option :client, :specs
+      end
+    end
+
+    [Xpitality::Notifier::ChatNotifier, Xpitality::Notifier::SmsNotifier, Xpitality::Notifier::ExceptionNotifier].each do |klass|
+
+      context "when #{klass}" do
+        it 'does not call client_class (skipping the notification)' do
+          expect(klass).to receive(:sanity_check).and_return(false)
+          expect(klass).not_to receive(:client_class)
+
+          klass.notify('message', {})
+        end
+      end
+    end
+  end
 end

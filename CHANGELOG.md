@@ -1,3 +1,6 @@
+## 0.0.3 - 2016-04-27
+  * builds in a possibility to skip the client initialization and notify method if client is specified as :specs (useful when gem is used as a dependency in a gem)
+
 ## 0.0.2 - 2016-04-21
   * changes how the options are specified in the initializer
   * adds SmsNotifier

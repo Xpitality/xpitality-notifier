@@ -25,6 +25,7 @@ module Xpitality
         end
 
         def sanity_check(options={})
+          return false if @client == :specs
           raise 'unknown client' unless known_clients.include?(@client)
           default_options.keys.each do |opt|
             raise "mandatory option #{opt} is missing" unless options[opt]
@@ -34,8 +35,7 @@ module Xpitality
         def notify(message, options={})
           options.symbolize_keys!
           options = default_options.merge(options)
-          sanity_check(options)
-          client_class.notify message, options
+          client_class.notify(message, options) if sanity_check(options)
         end
 
         def client_class
