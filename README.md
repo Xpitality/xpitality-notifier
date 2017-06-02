@@ -102,6 +102,9 @@ Available clients: *[:bugsnag]*
     end
 ```
 
+If Bugsnag is used for ExceptionNotifier, additional data may be passed to a custom tab shown in the bugsnag web interface (since v0.0.4) 
+
+
 ## Usage
 
 Usage for all notifiers is the same:
@@ -125,6 +128,11 @@ Examples:
     rescue Exception => e
       # do_something
       Xpitality::Notifier::ExceptionNotifier.notify e
+      
+      # creating a custom tab
+      p = Page.new
+      p.valid?
+      Xpitality::Notifier::ExceptionNotifier.notify e, tabs: { page_errors: p.errors.messages, another_tab: { key1: 'value1', key2: 'value2' } }
     end
 ```    
 

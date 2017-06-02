@@ -1,3 +1,6 @@
+## 0.0.4 - 2017-06-02
+  * allows BugsnagNotifier to pass data to custom tabs 
+
 ## 0.0.3 - 2016-04-27
   * builds in a possibility to skip the client initialization and notify method if client is specified as :specs (useful when gem is used as a dependency in a gem)
 
