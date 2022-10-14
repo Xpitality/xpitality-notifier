@@ -26,4 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'slack-notifier'
   spec.add_development_dependency 'nexmo'
   spec.add_development_dependency 'bugsnag'
+  spec.add_development_dependency 'sentry-ruby'
+  spec.add_development_dependency 'sentry-rails'
 end
