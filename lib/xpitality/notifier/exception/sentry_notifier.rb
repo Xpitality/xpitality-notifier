@@ -3,7 +3,11 @@ module Xpitality
     module Exception
       class SentryNotifier
         def self.notify(message, options)
-          Sentry.capture_message(message)
+          if message.is_a?(::Exception)
+            Sentry.capture_exception(message)
+          else
+            Sentry.capture_message(message)
+          end
         end
       end
     end
